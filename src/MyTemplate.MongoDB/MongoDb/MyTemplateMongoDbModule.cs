@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using MyTemplate.Books;
 using Volo.Abp.AuditLogging.MongoDB;
 using Volo.Abp.BackgroundJobs.MongoDB;
 using Volo.Abp.FeatureManagement.MongoDB;
@@ -27,6 +28,12 @@ public class MyTemplateMongoDbModule : AbpModule
 {
     public override void ConfigureServices(ServiceConfigurationContext context)
     {
+        //Example only, remove if not needed
+        context.Services.AddMongoDbContext<BookStoreMongoDbContext>(options =>
+        {
+            options.AddDefaultRepositories();
+        });
+        
         context.Services.AddMongoDbContext<MyTemplateMongoDbContext>(options =>
         {
             options.AddDefaultRepositories();
