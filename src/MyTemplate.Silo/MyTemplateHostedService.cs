@@ -1,14 +1,14 @@
 using Microsoft.Extensions.Hosting;
 using Volo.Abp;
 
-namespace AbpOrleansAppTemplate.Silo;
+namespace MyTemplate.Silo;
 
-public class AbpOrleansBackendTemplateHostedService : IHostedService
+public class MyTemplateHostedService : IHostedService
 {
     private readonly IAbpApplicationWithExternalServiceProvider _application;
     private readonly IServiceProvider _serviceProvider;
 
-    public AbpOrleansBackendTemplateHostedService(
+    public MyTemplateHostedService(
         IAbpApplicationWithExternalServiceProvider application,
         IServiceProvider serviceProvider)
     {
