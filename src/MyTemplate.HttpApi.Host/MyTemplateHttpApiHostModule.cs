@@ -13,6 +13,8 @@ using MyTemplate.MultiTenancy;
 using Volo.Abp.AspNetCore.Mvc.UI.Theme.LeptonXLite;
 using Volo.Abp.AspNetCore.Mvc.UI.Theme.LeptonXLite.Bundling;
 using Microsoft.OpenApi.Models;
+using MyTemplate.Application.Grains;
+using MyTemplate.Domain.Grains;
 using OpenIddict.Validation.AspNetCore;
 using Volo.Abp;
 using Volo.Abp.Account;
@@ -23,7 +25,6 @@ using Volo.Abp.AspNetCore.Mvc.UI.Bundling;
 using Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared;
 using Volo.Abp.AspNetCore.Serilog;
 using Volo.Abp.Autofac;
-using Volo.Abp.Localization;
 using Volo.Abp.Modularity;
 using Volo.Abp.Security.Claims;
 using Volo.Abp.Swashbuckle;
@@ -43,7 +44,7 @@ namespace MyTemplate;
     typeof(AbpAspNetCoreSerilogModule),
     typeof(AbpSwashbuckleModule)
 )]
-public class MyTemplateHttpApiHostModule : AbpModule
+public class MyTemplateHttpApiHostModule : AbpModule, IDomainGrainsModule, IApplicationGrainsModule
 {
     public override void PreConfigureServices(ServiceConfigurationContext context)
     {
