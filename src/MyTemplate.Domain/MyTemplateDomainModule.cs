@@ -20,7 +20,6 @@ namespace MyTemplate;
 
 [DependsOn(
     typeof(MyTemplateDomainSharedModule),
-    typeof(MyTemplateDomainGrainsModule),
     typeof(AbpAuditLoggingDomainModule),
     typeof(AbpBackgroundJobsDomainModule),
     typeof(AbpFeatureManagementDomainModule),
