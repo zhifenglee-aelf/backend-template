@@ -5,9 +5,15 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using MyTemplate.Domain.Grains.Grains;
+using Orleans;
+using Orleans.Configuration;
 using Orleans.Hosting;
+using Orleans.Providers.MongoDB.Configuration;
 using Serilog;
 using Serilog.Events;
+
+[assembly: GenerateCodeForDeclaringAssembly(typeof(IHello))]
 
 namespace MyTemplate;
 
@@ -30,13 +36,27 @@ public class Program
 
         try
         {
-            Log.Information("Starting MyTemplate.HttpApi.Host.");
+            Log.Information("Starting HttpApi.Host.");
             var builder = WebApplication.CreateBuilder(args);
-            builder.Host.AddAppSettingsSecretsJson()
+            builder.Host
                 .UseOrleansClient((context, clientBuilder) =>
                 {
-                    clientBuilder.UseLocalhostClustering();
+                    var config = context.Configuration;
+                    
+                    clientBuilder
+                        .UseMongoDBClient(config["Orleans:MongoDBClient"])
+                        .UseMongoDBClustering(options =>
+                        {
+                            options.DatabaseName = config["Orleans:DataBase"];
+                            options.Strategy = MongoDBMembershipStrategy.SingleDocument;
+                        })
+                        .Configure<ClusterOptions>(options =>
+                        {
+                            options.ClusterId = config["Orleans:ClusterId"];
+                            options.ServiceId = config["Orleans:ServiceId"];
+                        });
                 })
+                .ConfigureDefaults(args)
                 .UseAutofac()
                 .UseSerilog();
             await builder.AddApplicationAsync<MyTemplateHttpApiHostModule>();

@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 using Orleans.Configuration;
 using Orleans.Providers.MongoDB.Configuration;
 
-namespace AbpOrleansAppTemplate.Silo.Extensions
+namespace MyTemplate.Silo.Extensions
 {
     public static class OrleansHostExtension
     {
@@ -14,7 +14,7 @@ namespace AbpOrleansAppTemplate.Silo.Extensions
         {
             return hostBuilder.UseOrleans((context, siloBuilder) =>
             {
-                /*var configSection = context.Configuration.GetSection("Orleans");
+                var configSection = context.Configuration.GetSection("Orleans");
                 siloBuilder
                     .ConfigureEndpoints(advertisedIP: IPAddress.Parse(configSection.GetValue<string>("AdvertisedIP")),
                         siloPort: configSection.GetValue<int>("SiloPort"),
@@ -23,7 +23,6 @@ namespace AbpOrleansAppTemplate.Silo.Extensions
                     .UseMongoDBClustering(options =>
                     {
                         options.DatabaseName = configSection.GetValue<string>("DataBase");
-                        ;
                         options.Strategy = MongoDBMembershipStrategy.SingleDocument;
                     })
                     .Configure<JsonGrainStateSerializerOptions>(options => options.ConfigureJsonSerializerSettings =
@@ -58,9 +57,7 @@ namespace AbpOrleansAppTemplate.Silo.Extensions
                         options.CounterUpdateIntervalMs =
                             configSection.GetValue<int>("DashboardCounterUpdateIntervalMs");
                     })
-                    .ConfigureLogging(logging => { logging.SetMinimumLevel(LogLevel.Debug).AddConsole(); });*/
-                siloBuilder.UseLocalhostClustering()
-                    .ConfigureLogging(logging => logging.AddConsole());
+                    .ConfigureLogging(logging => { logging.SetMinimumLevel(LogLevel.Debug).AddConsole(); });
             })
             .UseConsoleLifetime();
         }
