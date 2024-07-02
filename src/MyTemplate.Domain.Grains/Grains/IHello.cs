@@ -1,4 +1,4 @@
-namespace Grains.Grains;
+namespace MyTemplate.Domain.Grains.Grains;
 
 public interface IHello : IGrainWithIntegerKey
 {

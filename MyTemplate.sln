@@ -39,6 +39,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyTemplate.Silo", "src\MyTe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyTemplate.Domain.Grains", "src\MyTemplate.Domain.Grains\MyTemplate.Domain.Grains.csproj", "{D4AC2F60-6A39-45F8-B21E-5DA2DA4596AF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyTemplate.Application.Grains", "src\MyTemplate.Application.Grains\MyTemplate.Application.Grains.csproj", "{3B9806E6-3F8B-4200-B2A2-52DCE698D334}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -109,6 +111,10 @@ Global
 		{D4AC2F60-6A39-45F8-B21E-5DA2DA4596AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D4AC2F60-6A39-45F8-B21E-5DA2DA4596AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D4AC2F60-6A39-45F8-B21E-5DA2DA4596AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B9806E6-3F8B-4200-B2A2-52DCE698D334}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B9806E6-3F8B-4200-B2A2-52DCE698D334}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B9806E6-3F8B-4200-B2A2-52DCE698D334}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B9806E6-3F8B-4200-B2A2-52DCE698D334}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -130,6 +136,7 @@ Global
 		{748584B1-BA69-4F6A-81AA-F4BDE6BCE29D} = {CA9AC87F-097E-4F15-8393-4BC07735A5B0}
 		{613D08BD-1756-4862-BB11-9A06E5A11134} = {CA9AC87F-097E-4F15-8393-4BC07735A5B0}
 		{D4AC2F60-6A39-45F8-B21E-5DA2DA4596AF} = {CA9AC87F-097E-4F15-8393-4BC07735A5B0}
+		{3B9806E6-3F8B-4200-B2A2-52DCE698D334} = {CA9AC87F-097E-4F15-8393-4BC07735A5B0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {28315BFD-90E7-4E14-A2EA-F3D23AF4126F}

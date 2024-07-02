@@ -12,6 +12,10 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\MyTemplate.Domain.Shared\MyTemplate.Domain.Shared.csproj" />
+        <ProjectReference Include="..\MyTemplate.Application.Contracts\MyTemplate.Application.Contracts.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Grains\" />
     </ItemGroup>
 </Project>

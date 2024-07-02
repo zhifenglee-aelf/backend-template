@@ -21,6 +21,7 @@
     <ItemGroup>
         <ProjectReference Include="..\MyTemplate.MongoDB\MyTemplate.MongoDB.csproj" />
         <ProjectReference Include="..\MyTemplate.Domain.Grains\MyTemplate.Domain.Grains.csproj" />
+        <ProjectReference Include="..\MyTemplate.Application.Grains\MyTemplate.Application.Grains.csproj" />
     </ItemGroup>
 
     <ItemGroup>

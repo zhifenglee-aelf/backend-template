@@ -1,12 +1,15 @@
 using Microsoft.Extensions.Logging;
 
-namespace Grains.Grains;
+namespace MyTemplate.Domain.Grains.Grains;
 
 public class HelloGrain : Grain, IHello
 {
     private readonly ILogger _logger;
 
-    public HelloGrain(ILogger<HelloGrain> logger) => _logger = logger;
+    public HelloGrain(ILogger<HelloGrain> logger)
+    {
+        _logger = logger;
+    }
 
     ValueTask<string> IHello.SayHello(string greeting)
     {

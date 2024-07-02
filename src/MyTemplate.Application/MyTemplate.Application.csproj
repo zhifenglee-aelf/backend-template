@@ -11,6 +11,7 @@
   <ItemGroup>
     <ProjectReference Include="..\MyTemplate.Domain\MyTemplate.Domain.csproj" />
     <ProjectReference Include="..\MyTemplate.Application.Contracts\MyTemplate.Application.Contracts.csproj" />
+    <ProjectReference Include="..\MyTemplate.Application.Grains\MyTemplate.Application.Grains.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,6 +1,6 @@
 using System;
 using System.Threading.Tasks;
-using Grains.Grains;
+using MyTemplate.Domain.Grains.Grains;
 using Orleans;
 using Volo.Abp.DependencyInjection;
 
