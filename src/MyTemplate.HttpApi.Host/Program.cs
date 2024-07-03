@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Client;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MyTemplate.Extensions;
@@ -29,12 +27,6 @@ public class Program
             await builder.AddApplicationAsync<MyTemplateHttpApiHostModule>();
             var app = builder.Build();
             await app.InitializeApplicationAsync();
-            
-            //TODO: can be removed along with HelloService.cs after setting up proper grains
-            app.MapGet("/hi", async ([FromServices] HelloService helloService) =>
-            {
-                return await helloService.SayHi();
-            });
             
             await app.RunAsync();
             return 0;
