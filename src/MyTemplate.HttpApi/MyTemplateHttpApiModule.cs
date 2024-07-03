@@ -1,13 +1,10 @@
 ﻿using Localization.Resources.AbpUi;
 using MyTemplate.Localization;
 using Volo.Abp.Account;
-using Volo.Abp.FeatureManagement;
 using Volo.Abp.Identity;
 using Volo.Abp.Localization;
 using Volo.Abp.Modularity;
 using Volo.Abp.PermissionManagement.HttpApi;
-using Volo.Abp.SettingManagement;
-using Volo.Abp.TenantManagement;
 
 namespace MyTemplate;
 
@@ -15,10 +12,7 @@ namespace MyTemplate;
     typeof(MyTemplateApplicationContractsModule),
     typeof(AbpAccountHttpApiModule),
     typeof(AbpIdentityHttpApiModule),
-    typeof(AbpPermissionManagementHttpApiModule),
-    typeof(AbpTenantManagementHttpApiModule),
-    typeof(AbpFeatureManagementHttpApiModule),
-    typeof(AbpSettingManagementHttpApiModule)
+    typeof(AbpPermissionManagementHttpApiModule)
     )]
 public class MyTemplateHttpApiModule : AbpModule
 {
