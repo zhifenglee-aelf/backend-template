@@ -5,15 +5,9 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using MyTemplate.Domain.Grains.Grains;
-using Orleans;
-using Orleans.Configuration;
-using Orleans.Hosting;
-using Orleans.Providers.MongoDB.Configuration;
+using MyTemplate.Extensions;
 using Serilog;
 using Serilog.Events;
-
-[assembly: GenerateCodeForDeclaringAssembly(typeof(IHello))]
 
 namespace MyTemplate;
 
@@ -21,41 +15,14 @@ public class Program
 {
     public async static Task<int> Main(string[] args)
     {
-        Log.Logger = new LoggerConfiguration()
-#if DEBUG
-            .MinimumLevel.Debug()
-#else
-            .MinimumLevel.Information()
-#endif
-            .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
-            .MinimumLevel.Override("Microsoft.EntityFrameworkCore", LogEventLevel.Warning)
-            .Enrich.FromLogContext()
-            .WriteTo.Async(c => c.File("Logs/logs.txt"))
-            .WriteTo.Async(c => c.Console())
-            .CreateLogger();
+        ConfigureLogger();
 
         try
         {
             Log.Information("Starting HttpApi.Host.");
             var builder = WebApplication.CreateBuilder(args);
             builder.Host
-                .UseOrleansClient((context, clientBuilder) =>
-                {
-                    var config = context.Configuration;
-                    
-                    clientBuilder
-                        .UseMongoDBClient(config["Orleans:MongoDBClient"])
-                        .UseMongoDBClustering(options =>
-                        {
-                            options.DatabaseName = config["Orleans:DataBase"];
-                            options.Strategy = MongoDBMembershipStrategy.SingleDocument;
-                        })
-                        .Configure<ClusterOptions>(options =>
-                        {
-                            options.ClusterId = config["Orleans:ClusterId"];
-                            options.ServiceId = config["Orleans:ServiceId"];
-                        });
-                })
+                .UseOrleansClientConfiguration()
                 .ConfigureDefaults(args)
                 .UseAutofac()
                 .UseSerilog();
@@ -86,5 +53,21 @@ public class Program
         {
             Log.CloseAndFlush();
         }
+    }
+    
+    private static void ConfigureLogger()
+    {
+        Log.Logger = new LoggerConfiguration()
+#if DEBUG
+            .MinimumLevel.Debug()
+#else
+            .MinimumLevel.Information()
+#endif
+            .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
+            .MinimumLevel.Override("Microsoft.EntityFrameworkCore", LogEventLevel.Warning)
+            .Enrich.FromLogContext()
+            .WriteTo.Async(c => c.File("Logs/logs.txt"))
+            .WriteTo.Async(c => c.Console())
+            .CreateLogger();
     }
 }
