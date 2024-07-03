@@ -11,6 +11,7 @@ public class MyTemplatePermissionDefinitionProvider : PermissionDefinitionProvid
         var myGroup = context.AddGroup(MyTemplatePermissions.GroupName);
         //Define your own permissions here. Example:
         //myGroup.AddPermission(MyTemplatePermissions.MyPermission1, L("Permission:MyPermission1"));
+
     }
 
     private static LocalizableString L(string name)

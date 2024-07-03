@@ -14,8 +14,4 @@
     <ItemGroup>
         <ProjectReference Include="..\MyTemplate.Application.Contracts\MyTemplate.Application.Contracts.csproj" />
     </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Grains\" />
-    </ItemGroup>
 </Project>
